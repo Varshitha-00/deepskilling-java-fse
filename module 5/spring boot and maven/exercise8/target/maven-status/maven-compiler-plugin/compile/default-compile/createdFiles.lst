@@ -1,0 +1,4 @@
+com\library\exercise8\repository\BookRepository.class
+com\library\exercise8\aspect\LoggingAspect.class
+com\library\exercise8\service\BookService.class
+com\library\exercise8\LibraryManagementApplication.class

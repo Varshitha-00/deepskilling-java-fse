@@ -1,0 +1,4 @@
+com\library\exercise9\controller\BookController.class
+com\library\exercise9\LibraryManagementApplication.class
+com\library\exercise9\model\Book.class
+com\library\exercise9\repository\BookRepository.class

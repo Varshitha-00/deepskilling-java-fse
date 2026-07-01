@@ -1,0 +1,3 @@
+com\library\exercise5\LibraryManagementApplication.class
+com\library\exercise5\repository\BookRepository.class
+com\library\exercise5\service\BookService.class
