@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="skill1" class="com.example.springresthandson.model.Skill">
+        <property name="id" value="1"/>
+        <property name="name" value="Java"/>
+    </bean>
+
+    <bean id="skill2" class="com.example.springresthandson.model.Skill">
+        <property name="id" value="2"/>
+        <property name="name" value="Spring"/>
+    </bean>
+
+    <bean id="skill3" class="com.example.springresthandson.model.Skill">
+        <property name="id" value="3"/>
+        <property name="name" value="Angular"/>
+    </bean>
+
+    <bean id="department1" class="com.example.springresthandson.model.Department">
+        <property name="id" value="1"/>
+        <property name="name" value="Engineering"/>
+    </bean>
+
+    <bean id="department2" class="com.example.springresthandson.model.Department">
+        <property name="id" value="2"/>
+        <property name="name" value="HR"/>
+    </bean>
+
+    <bean id="department3" class="com.example.springresthandson.model.Department">
+        <property name="id" value="3"/>
+        <property name="name" value="Finance"/>
+    </bean>
+
+    <bean id="employee1" class="com.example.springresthandson.model.Employee">
+        <property name="id" value="1"/>
+        <property name="name" value="John Doe"/>
+        <property name="salary" value="50000"/>
+        <property name="department" ref="department1"/>
+        <property name="skills">
+            <list>
+                <ref bean="skill1"/>
+                <ref bean="skill2"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="employee2" class="com.example.springresthandson.model.Employee">
+        <property name="id" value="2"/>
+        <property name="name" value="Jane Smith"/>
+        <property name="salary" value="60000"/>
+        <property name="department" ref="department2"/>
+        <property name="skills">
+            <list>
+                <ref bean="skill2"/>
+                <ref bean="skill3"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="employee3" class="com.example.springresthandson.model.Employee">
+        <property name="id" value="3"/>
+        <property name="name" value="Robert King"/>
+        <property name="salary" value="70000"/>
+        <property name="department" ref="department1"/>
+        <property name="skills">
+            <list>
+                <ref bean="skill1"/>
+                <ref bean="skill3"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="employee4" class="com.example.springresthandson.model.Employee">
+        <property name="id" value="4"/>
+        <property name="name" value="Alice Brown"/>
+        <property name="salary" value="65000"/>
+        <property name="department" ref="department3"/>
+        <property name="skills">
+            <list>
+                <ref bean="skill1"/>
+                <ref bean="skill2"/>
+                <ref bean="skill3"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="employeeList" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="employee1"/>
+                <ref bean="employee2"/>
+                <ref bean="employee3"/>
+                <ref bean="employee4"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="departmentList" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="department1"/>
+                <ref bean="department2"/>
+                <ref bean="department3"/>
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>
