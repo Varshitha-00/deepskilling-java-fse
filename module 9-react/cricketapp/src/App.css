@@ -1,0 +1,37 @@
+.app {
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+  color: #1f2937;
+}
+
+h1 {
+  text-align: center;
+  color: #0f766e;
+}
+
+.card {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 20px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin: 6px 0;
+}
+
+.badge {
+  display: inline-block;
+  margin: 4px;
+  padding: 6px 10px;
+  background: #14b8a6;
+  color: white;
+  border-radius: 999px;
+}

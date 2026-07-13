@@ -1,0 +1,19 @@
+.App {
+  padding: 24px;
+  font-family: Arial, sans-serif;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.App h1 {
+  text-align: center;
+  color: #1f2937;
+}
+
+.cohort-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+  margin-top: 24px;
+}

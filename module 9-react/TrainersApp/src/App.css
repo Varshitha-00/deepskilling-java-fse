@@ -1,0 +1,57 @@
+.App {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #f7fafc;
+  min-height: 100vh;
+}
+
+.nav-bar {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.nav-bar a {
+  text-decoration: none;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.home-page,
+.trainers-list,
+.trainer-details {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.trainers-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.trainers-list li {
+  margin-bottom: 12px;
+}
+
+.trainers-list a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.trainer-details p {
+  margin: 8px 0;
+}
+
+.trainer-details a {
+  display: inline-block;
+  margin-top: 16px;
+  color: #2563eb;
+}

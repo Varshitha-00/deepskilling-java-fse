@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.c8ee85e7.css","mappings":"AAAA,KAEE,kBAAmB,CADnB,QAEF,CAEA,EACE,qBACF","sources":["index.css"],"sourcesContent":["body {\r\n  margin: 0;\r\n  background: #f3f4f6;\r\n}\r\n\r\n* {\r\n  box-sizing: border-box;\r\n}\r\n"],"names":[],"sourceRoot":""}

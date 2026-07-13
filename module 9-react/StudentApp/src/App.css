@@ -1,0 +1,9 @@
+.App {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.App div {
+  margin: 1rem 0;
+  font-family: Arial, sans-serif;
+}

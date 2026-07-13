@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.2b6d2cdd.css","mappings":"AAAA,KAEE,kBAAmB,CADnB,QAEF,CAEA,EACE,qBACF,CAEA,OAEE,cAAe,CADf,gBAEF","sources":["index.css"],"sourcesContent":["body {\r\n  margin: 0;\r\n  background: #f8fafc;\r\n}\r\n\r\n* {\r\n  box-sizing: border-box;\r\n}\r\n\r\nbutton {\r\n  padding: 8px 12px;\r\n  cursor: pointer;\r\n}\r\n"],"names":[],"sourceRoot":""}
