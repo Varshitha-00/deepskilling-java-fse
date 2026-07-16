@@ -1,0 +1,24 @@
+<div class="notification-box">
+  <h4>Notifications <span class="badge">{{ notificationService.getMessages().length }}</span></h4>
+
+  <div class="notification-input">
+    <input
+      type="text"
+      [(ngModel)]="newMessage"
+      placeholder="Type a notification..."
+      class="notif-input"
+    />
+    <button (click)="addMessage()" class="btn-add">Add</button>
+    <button (click)="clear()" class="btn-clear">Clear</button>
+  </div>
+
+  @if (notificationService.getMessages().length === 0) {
+    <p class="empty">No notifications.</p>
+  } @else {
+    <ul class="notif-list">
+      @for (msg of notificationService.getMessages(); track $index) {
+        <li class="notif-item">{{ msg }}</li>
+      }
+    </ul>
+  }
+</div>

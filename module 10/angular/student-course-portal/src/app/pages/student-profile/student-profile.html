@@ -1,0 +1,30 @@
+<div class="profile">
+  <h2>Student Profile</h2>
+
+  <div class="profile__card">
+    <div class="profile__avatar">{{ student.name.charAt(0) }}</div>
+    <div class="profile__info">
+      <h3>{{ student.name }}</h3>
+      <p>{{ student.email }}</p>
+      <p>GPA: <strong>{{ student.gpa }}</strong> &nbsp;|&nbsp; {{ student.year }}</p>
+    </div>
+  </div>
+
+  <h3 class="section-title">Enrolled Courses</h3>
+
+  <!-- Cross-slice NgRx selector via async pipe -->
+  @if (enrolledCourses$ | async; as enrolledCourses) {
+    @if (enrolledCourses.length > 0) {
+      <ul class="enrolled-list">
+        @for (course of enrolledCourses; track course.id) {
+          <li class="enrolled-item">
+            <span class="enrolled-name">{{ course.name }}</span>
+            <span class="enrolled-code">{{ course.code }}</span>
+          </li>
+        }
+      </ul>
+    } @else {
+      <p class="empty">No courses enrolled yet. Browse courses to enroll.</p>
+    }
+  }
+</div>

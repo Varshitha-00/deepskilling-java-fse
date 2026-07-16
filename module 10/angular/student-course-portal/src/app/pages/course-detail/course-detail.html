@@ -1,0 +1,26 @@
+<div class="detail">
+  <button class="btn-back" (click)="goBack()">&#8592; Back to Courses</button>
+
+  @if (errorMessage) {
+    <p class="error">{{ errorMessage }}</p>
+  }
+
+  @if (course) {
+    <div class="detail__card">
+      <div class="detail__header">
+        <h2>{{ course.name }}</h2>
+        @switch (course.gradeStatus) {
+          @case ('passed')  { <span class="badge badge--passed">Passed</span>  }
+          @case ('failed')  { <span class="badge badge--failed">Failed</span>  }
+          @default          { <span class="badge badge--pending">Pending</span> }
+        }
+      </div>
+      <table class="detail__table">
+        <tr><th>Course ID</th><td>{{ course.id }}</td></tr>
+        <tr><th>Code</th><td>{{ course.code }}</td></tr>
+        <tr><th>Credits</th><td>{{ course.credits }}</td></tr>
+        <tr><th>Grade Status</th><td>{{ course.gradeStatus }}</td></tr>
+      </table>
+    </div>
+  }
+</div>

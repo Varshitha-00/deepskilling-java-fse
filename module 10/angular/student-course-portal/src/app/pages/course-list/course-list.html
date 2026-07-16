@@ -1,0 +1,56 @@
+<div class="course-list">
+  <h2>Course Listing</h2>
+
+  <!-- Global HTTP loading bar -->
+  @if (loadingService.isLoading$ | async) {
+    <div class="spinner-bar"></div>
+  }
+
+  <!-- Search -->
+  <div class="search-bar">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="onSearchChange()"
+      placeholder="Search courses..."
+      class="search-input"
+    />
+    @if (searchTerm) {
+      <span class="search-hint">Results for: <strong>{{ searchTerm }}</strong></span>
+    }
+  </div>
+
+  <!-- NgRx loading state -->
+  @if (loading$ | async) {
+    <p class="loading">Loading courses...</p>
+  }
+
+  <!-- NgRx error state -->
+  @if (error$ | async; as err) {
+    <div class="error-banner">
+      {{ err }}
+      <button (click)="retry()" class="btn-retry">Retry</button>
+    </div>
+  }
+
+  <!-- Course grid — uses plain array, no method call in template -->
+  @if (filteredCourses.length === 0 && !(loading$ | async) && !(error$ | async)) {
+    <p class="empty">No courses available.</p>
+  } @else {
+    <div class="course-grid">
+      @for (course of filteredCourses; track course.id) {
+        <div class="card-wrapper">
+          <app-course-card
+            [course]="course"
+            (enrollRequested)="onEnroll($event)"
+          ></app-course-card>
+          <button class="btn-detail" (click)="viewDetail(course.id)">View Detail</button>
+        </div>
+      }
+    </div>
+  }
+
+  @if (selectedCourseId !== null) {
+    <p class="selected">Selected course ID: <strong>{{ selectedCourseId }}</strong></p>
+  }
+</div>

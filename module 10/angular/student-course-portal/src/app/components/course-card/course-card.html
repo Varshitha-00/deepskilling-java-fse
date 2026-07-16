@@ -1,0 +1,34 @@
+<div
+  class="card"
+  [ngClass]="{ 'card--enrolled': (isEnrolled$ | async), 'card--full': course.credits >= 4, 'expanded': isExpanded }"
+  [ngStyle]="cardBorderStyle"
+  appHighlight="lightyellow"
+>
+  <div class="card__header">
+    <h3>{{ course.name }}</h3>
+    @switch (course.gradeStatus) {
+      @case ('passed')  { <span class="badge badge--passed">Passed</span>  }
+      @case ('failed')  { <span class="badge badge--failed">Failed</span>  }
+      @default          { <span class="badge badge--pending">Pending</span> }
+    }
+  </div>
+
+  <p>Code: <strong>{{ course.code }}</strong></p>
+  <p>{{ course.credits | creditLabel }}</p>
+
+  <div class="card__actions">
+    <button class="btn-enroll" (click)="onEnrollClick()">
+      {{ (isEnrolled$ | async) ? 'Unenroll' : 'Enroll' }}
+    </button>
+    <button class="btn-details" (click)="toggleExpanded()">
+      {{ isExpanded ? 'Hide Details' : 'Show Details' }}
+    </button>
+  </div>
+
+  @if (isExpanded) {
+    <div class="card__details">
+      <p>Grade Status: {{ course.gradeStatus }}</p>
+      <p>Course ID: {{ course.id }}</p>
+    </div>
+  }
+</div>

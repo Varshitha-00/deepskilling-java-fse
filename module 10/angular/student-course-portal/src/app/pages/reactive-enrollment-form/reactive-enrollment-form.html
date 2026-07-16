@@ -1,0 +1,108 @@
+<div class="form-container">
+  <h2>Enrollment Request (Reactive Form)</h2>
+
+  @if (submitted) {
+    <div class="success-message">Reactive enrollment submitted!</div>
+  }
+
+  <!-- [formGroup] binds template to FormGroup in component -->
+  <form [formGroup]="enrollForm" (ngSubmit)="onSubmit()" novalidate>
+
+    <!-- Student Name -->
+    <div class="form-group">
+      <label>Student Name *</label>
+      <input type="text" formControlName="studentName"
+             class="form-control" placeholder="Enter your name" />
+      @if (enrollForm.get('studentName')?.touched) {
+        @if (enrollForm.get('studentName')?.errors?.['required']) {
+          <div class="error-msg">Name is required.</div>
+        }
+        @if (enrollForm.get('studentName')?.errors?.['minlength']) {
+          <div class="error-msg">Name must be at least 3 characters.</div>
+        }
+      }
+    </div>
+
+    <!-- Student Email — async validator -->
+    <div class="form-group">
+      <label>Email *</label>
+      <input type="email" formControlName="studentEmail"
+             class="form-control" placeholder="student@college.edu" />
+      @if (enrollForm.get('studentEmail')?.pending) {
+        <div class="info-msg">Checking email...</div>
+      }
+      @if (enrollForm.get('studentEmail')?.touched) {
+        @if (enrollForm.get('studentEmail')?.errors?.['required']) {
+          <div class="error-msg">Email is required.</div>
+        }
+        @if (enrollForm.get('studentEmail')?.errors?.['email']) {
+          <div class="error-msg">Enter a valid email address.</div>
+        }
+        @if (enrollForm.get('studentEmail')?.errors?.['emailTaken']) {
+          <div class="error-msg">This email is already taken.</div>
+        }
+      }
+    </div>
+
+    <!-- Course ID — custom sync validator (no XX prefix) -->
+    <div class="form-group">
+      <label>Course ID *</label>
+      <input type="text" formControlName="courseId"
+             class="form-control" placeholder="e.g. CS101 (not XX...)" />
+      @if (enrollForm.get('courseId')?.touched) {
+        @if (enrollForm.get('courseId')?.errors?.['required']) {
+          <div class="error-msg">Course ID is required.</div>
+        }
+        @if (enrollForm.get('courseId')?.errors?.['noCourseCode']) {
+          <div class="error-msg">Course code starting with XX is not allowed.</div>
+        }
+      }
+    </div>
+
+    <!-- Preferred Semester -->
+    <div class="form-group">
+      <label>Preferred Semester *</label>
+      <select formControlName="preferredSemester" class="form-control">
+        <option value="Odd">Odd</option>
+        <option value="Even">Even</option>
+      </select>
+    </div>
+
+    <!-- Agree to Terms -->
+    <div class="form-group checkbox-group">
+      <input type="checkbox" formControlName="agreeToTerms" id="agreeReactive" />
+      <label for="agreeReactive">I agree to the terms and conditions *</label>
+      @if (enrollForm.get('agreeToTerms')?.touched &&
+           enrollForm.get('agreeToTerms')?.errors?.['required']) {
+        <div class="error-msg">You must agree to the terms.</div>
+      }
+    </div>
+
+    <!-- FormArray — dynamic additional courses -->
+    <div class="form-group">
+      <label>Additional Courses</label>
+      <div formArrayName="additionalCourses">
+        @for (ctrl of additionalCourses.controls; track $index) {
+          <div class="array-row">
+            <input type="text" [formControlName]="$index"
+                   class="form-control" placeholder="Course code" />
+            <button type="button" class="btn-remove" (click)="removeCourse($index)">
+              Remove
+            </button>
+          </div>
+        }
+      </div>
+      <button type="button" class="btn-add" (click)="addCourse()">
+        + Add Another Course
+      </button>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-submit"
+              [disabled]="enrollForm.invalid || enrollForm.pending">
+        Submit
+      </button>
+    </div>
+
+  </form>
+</div>
