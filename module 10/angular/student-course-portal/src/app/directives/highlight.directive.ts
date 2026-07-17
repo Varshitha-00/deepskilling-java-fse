@@ -1,15 +1,11 @@
 import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
 
-// Custom attribute directive — applied as appHighlight or appHighlight="pink"
-// @HostListener binds to host element events; Angular cleans up listeners automatically
 @Directive({
   selector: '[appHighlight]',
   standalone: true
 })
 export class HighlightDirective {
 
-  // @Input allows caller to pass a custom colour: <div appHighlight="lightblue">
-  // Default is 'yellow' so it works without passing any value
   @Input() appHighlight = 'yellow';
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}

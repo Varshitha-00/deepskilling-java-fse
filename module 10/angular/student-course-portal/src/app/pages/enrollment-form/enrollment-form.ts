@@ -1,4 +1,3 @@
-// Hands-On 4 — Template-Driven Form
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 
@@ -12,7 +11,6 @@ import { FormsModule, NgForm } from '@angular/forms';
 export class EnrollmentForm {
   submitted = false;
 
-  // Called on form submit — NgForm gives access to full form state
   onSubmit(form: NgForm): void {
     console.log('Form value:', form.value);
     console.log('Form valid:', form.valid);
@@ -21,7 +19,6 @@ export class EnrollmentForm {
     }
   }
 
-  // Resets all fields and clears all validation states
   onReset(form: NgForm): void {
     form.resetForm();
     this.submitted = false;

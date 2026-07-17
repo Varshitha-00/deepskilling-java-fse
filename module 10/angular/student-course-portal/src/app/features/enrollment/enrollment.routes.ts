@@ -1,7 +1,3 @@
-// Hands-On 7 — Enrollment Feature Routes (lazy loaded)
-// These routes are loaded on demand when the user first visits /enroll or /enroll-reactive.
-// Angular downloads a separate JS chunk only at that point — not on initial app load.
-// Verify in Chrome DevTools → Network: a new chunk file appears on first /enroll visit.
 import { Routes } from '@angular/router';
 import { unsavedChangesGuard } from '../../guards/unsaved-changes.guard';
 

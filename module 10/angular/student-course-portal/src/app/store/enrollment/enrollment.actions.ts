@@ -1,4 +1,3 @@
-// Hands-On 9 — Enrollment Actions
 import { createAction, props } from '@ngrx/store';
 
 export const enrollInCourse = createAction(

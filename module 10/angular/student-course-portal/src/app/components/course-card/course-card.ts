@@ -28,9 +28,6 @@ export class CourseCard implements OnChanges, OnInit {
 
   isExpanded = false;
   isEnrolled$!: Observable<boolean>;
-
-  // Store border style as a fixed property — NOT a getter
-  // Getters return new objects on every change detection cycle → infinite loop
   cardBorderStyle: Record<string, string> = {};
 
   constructor(private store: Store) {}
@@ -46,9 +43,7 @@ export class CourseCard implements OnChanges, OnInit {
         'previous:', changes['course'].previousValue,
         '→ current:', changes['course'].currentValue
       );
-      // Set border style once — not in a getter
       this.updateBorderStyle();
-      // Derive per-card enrollment Observable from the store
       this.isEnrolled$ = this.store.select(selectEnrolledIds).pipe(
         map(ids => ids.includes(this.course.id))
       );
@@ -60,7 +55,6 @@ export class CourseCard implements OnChanges, OnInit {
     const colors: Record<string, string> = {
       passed: 'green', failed: 'red', pending: '#9e9e9e'
     };
-    // Assign once — Angular only re-renders when reference changes
     this.cardBorderStyle = {
       'border-left': `4px solid ${colors[this.course.gradeStatus] ?? '#9e9e9e'}`
     };
@@ -68,7 +62,6 @@ export class CourseCard implements OnChanges, OnInit {
 
   onEnrollClick(): void {
     const id = this.course.id;
-    // take(1) = one-shot read, no memory leak
     this.store.select(selectEnrolledIds).pipe(take(1)).subscribe(ids => {
       if (ids.includes(id)) {
         this.store.dispatch(unenrollFromCourse({ courseId: id }));

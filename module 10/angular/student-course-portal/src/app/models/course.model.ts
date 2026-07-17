@@ -1,4 +1,3 @@
-// Shared Course interface — used across components, services, and store
 export interface Course {
   id: number;
   name: string;

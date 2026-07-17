@@ -17,8 +17,6 @@ export class Home implements OnInit, OnDestroy {
   isPortalActive = true;
   message = '';
   searchTerm = '';
-
-  // Stats from singleton services — same data as CourseList page
   coursesAvailable = 0;
   enrolledCount = 0;
   gpa = 3.8;
@@ -29,7 +27,6 @@ export class Home implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // Both components share the same CourseService singleton
     this.coursesAvailable = this.courseService.getFallbackCourses().length;
     this.enrolledCount = this.enrollmentService.getEnrolledIds().length;
     console.log('HomeComponent initialised — courses loaded:', this.coursesAvailable);

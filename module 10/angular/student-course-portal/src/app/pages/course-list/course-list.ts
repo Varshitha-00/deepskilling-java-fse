@@ -25,11 +25,8 @@ export class CourseList implements OnInit, OnDestroy {
 
   loading$!: Observable<boolean>;
   error$!: Observable<string | null>;
-
-  // filteredCourses is a plain array — no getter, no new reference per cycle
   filteredCourses: Course[] = [];
   allCourses: Course[] = [];
-
   selectedCourseId: number | null = null;
   searchTerm = '';
 
@@ -47,9 +44,8 @@ export class CourseList implements OnInit, OnDestroy {
     if (searchParam) this.searchTerm = searchParam;
 
     this.loading$ = this.store.select(selectCoursesLoading);
-    this.error$   = this.store.select(selectCoursesError);
+    this.error$ = this.store.select(selectCoursesError);
 
-    // Subscribe to store — update filteredCourses when store emits
     this.coursesSub = this.store.select(selectAllCourses).subscribe(courses => {
       this.allCourses = courses;
       this.applyFilter();

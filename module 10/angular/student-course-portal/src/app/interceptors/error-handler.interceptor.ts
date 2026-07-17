@@ -1,8 +1,3 @@
-// Hands-On 8 — ErrorHandlerInterceptor
-// Globally intercepts HTTP error responses.
-// 401 → navigates to home (session expired / unauthorized)
-// 500 → logs a global server error
-// Always re-throws so the component's own error handler also receives it.
 import { HttpInterceptorFn, HttpErrorResponse } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
@@ -21,7 +16,6 @@ export const errorHandlerInterceptor: HttpInterceptorFn = (req, next) => {
       } else {
         console.error(`[ErrorInterceptor] HTTP ${error.status}:`, error.message);
       }
-      // Re-throw so the component's catchError also receives the error
       return throwError(() => error);
     })
   );

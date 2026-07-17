@@ -23,7 +23,6 @@ export const appConfig: ApplicationConfig = {
       course: courseReducer,
       enrollment: enrollmentReducer
     }),
-    // Functional effect — no class needed
     provideEffects({ loadCourses$ }),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
   ]
